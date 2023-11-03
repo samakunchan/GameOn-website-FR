@@ -18,6 +18,22 @@ const quantityInput = document.getElementById('quantity');
 // launch modal form
 const launchModal = () => {
   modalbg.style.display = 'block';
+
+  // Reset errors messages
+  document.querySelectorAll('.error-message').forEach((tag) => {
+    tag.remove();
+    isFormValid = [];
+  });
+
+  // Reset highlight error field
+  document.querySelectorAll('.text-control-highlight').forEach((border) => {
+    border.classList.toggle('text-control-highlight');
+  });
+
+  // Reset success message
+  if(document.querySelector('.success-message')) {
+    document.querySelector('.success-message').remove();
+  }
 }
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
@@ -58,16 +74,6 @@ const preventErrorForTypeNumber = event => {
 quantityInput.addEventListener('keydown', preventErrorForTypeNumber);
 
 const formSubmitted = event => {
-  // Reset errors messages
-  document.querySelectorAll('.error-message').forEach((tag) => {
-    tag.remove();
-    isFormValid = [];
-  });
-  // Reset success message
-  if(document.querySelector('.success-message')) {
-    document.querySelector('.success-message').remove();
-  }
-
   // Transform a form data to an Object
   const group = [...new FormData(event.target)].reduce((r, a) => {
 
@@ -110,12 +116,12 @@ const formSubmitted = event => {
 
   // Specification for location
   if (group[`location`] === undefined) {
-    group[`location`] = `Vous devez choisir une option.`;
+    group[`location`] = invalidLocation;
   }
 
   // Specification for acceptation condition
   if (group[`accept_condition`] === undefined) {
-    group[`accept_condition`] = `Vous devez vérifier que vous acceptez les termes et conditions.`;
+    group[`accept_condition`] = invalidAcceptCondition;
   }
 
   // Add errors messages in HTML and return a list of booleans
@@ -151,7 +157,7 @@ const formSubmitted = event => {
     // Bind closeModal callback for events
     crossButton.addEventListener('click', closeModal);
     closeButton.addEventListener('click', closeModal);
-    // event.preventDefault();
+    event.preventDefault();
   }
   event.preventDefault();
 }
@@ -164,22 +170,18 @@ const showErrorsInForm = (event, group) => {
   isFormValid = [];
   return listForbiddenActions.map(error => {
     if (Object.values(group).includes(error)) {
-      document.querySelectorAll('.error-message').forEach((tag) => {
-        tag.remove();
-      });
-      document.querySelectorAll('.text-control-highlight').forEach((border) => {
-        border.classList.toggle('text-control-highlight');
-      });
       Object.keys(group).forEach(key => {
         if (listForbiddenActions.includes(group[key])) {
           const error = document.createElement('small');
           error.classList.add('error-message');
           error.textContent = group[key];
           if(key === `accept_condition`) {
-            const error = document.createElement('small');
-            error.classList.add('error-message');
-            error.textContent = group[key];
-            document.getElementById('accept').appendChild(error);
+            if(!document.querySelector('.accept-required')) {
+              const error = document.createElement('small');
+              error.classList.add('error-message', 'accept-required');
+              error.textContent = group[key];
+              document.getElementById('accept').appendChild(error);
+            }
           } else if(key === 'location') {
             document.getElementById(key).appendChild(error);
           } else {
