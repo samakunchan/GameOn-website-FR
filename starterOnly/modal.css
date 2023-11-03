@@ -2,6 +2,7 @@
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
+  --error-color: #fe142f;
 }
 * {
   box-sizing: border-box;
@@ -26,6 +27,13 @@ p {
 
 img {
   padding-right: 1rem;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
 }
 
 .topnav {
@@ -472,6 +480,7 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
