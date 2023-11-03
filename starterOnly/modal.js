@@ -26,6 +26,9 @@ modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 const closeModal = () => {
   modalbg.style.display = 'none';
   formElement.reset();
+  if(document.querySelector('.success-panel')) {
+    document.querySelector('.success-panel').remove();
+  }
 }
 closeModalBtn.addEventListener('click', closeModal)
 
@@ -116,11 +119,43 @@ const formSubmitted = event => {
   }
 
   // Add errors messages in HTML and return a list of booleans
-  showErrorsInForm(event, group);
+  const errors  = showErrorsInForm(event, group);
 
+  // If all boolean in list contain true, it contains no errors ans it show success message
+  if(errors.every((error) => error === true)) {
+    // Create all elements HTML
+    const successPanel = document.createElement('div');
+    const successMessage = document.createElement('p');
+    const crossButton = document.createElement('span');
+    const closeButtonContainer = document.createElement('div');
+    const closeButton = document.createElement('div');
+
+    // Add all class in HTML elements
+    crossButton.classList.add('close');
+    closeButton.classList.add('close-after-success', 'common-btn');
+    closeButtonContainer.classList.add('close-btn-container');
+    successPanel.classList.add('success-message', 'success-panel');
+
+    // Add text content
+    closeButton.textContent = 'Fermer';
+    successMessage.textContent = `Merci pour votre inscription`;
+
+    // Append HTML in correct order
+    successPanel.appendChild(crossButton);
+    successPanel.appendChild(successMessage);
+    successPanel.appendChild(closeButtonContainer);
+    closeButtonContainer.appendChild(closeButton);
+
+    document.querySelector('.btn-submit').parentElement.appendChild(successPanel);
+
+    // Bind closeModal callback for events
+    crossButton.addEventListener('click', closeModal);
+    closeButton.addEventListener('click', closeModal);
+    // event.preventDefault();
+  }
   event.preventDefault();
-
 }
+
 formElement.addEventListener('submit', formSubmitted);
 
 // Create a <small class="error-message"></small>
@@ -131,6 +166,9 @@ const showErrorsInForm = (event, group) => {
     if (Object.values(group).includes(error)) {
       document.querySelectorAll('.error-message').forEach((tag) => {
         tag.remove();
+      });
+      document.querySelectorAll('.text-control-highlight').forEach((border) => {
+        border.classList.toggle('text-control-highlight');
       });
       Object.keys(group).forEach(key => {
         if (listForbiddenActions.includes(group[key])) {
@@ -146,6 +184,7 @@ const showErrorsInForm = (event, group) => {
             document.getElementById(key).appendChild(error);
           } else {
             document.getElementById(key).parentElement.appendChild(error);
+            document.getElementById(key).classList.toggle('text-control-highlight');
           }
         }
       });
@@ -157,16 +196,6 @@ const showErrorsInForm = (event, group) => {
     }
   });
 }
-
-
-
-
-
-
-
-
-
-
 
 
 // Validators

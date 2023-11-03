@@ -121,8 +121,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -217,6 +215,11 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+.text-control-highlight {
+  border: solid red 2px;
+}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -331,7 +334,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.close-after-success{
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -341,6 +345,10 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+.close-after-success {
+  margin-bottom: 30px;
+  width: 220px;
 }
 /* custom select styles */
 .custom-select {
@@ -479,6 +487,31 @@ input[data-error]::after {
 }
 .hero-section > .btn-signup {
   display: none;
+}
+
+.success-panel {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  left: 0;
+  background: #232323;
+}
+
+.success-panel p {
+  position: relative;
+  top: 40%;
+  z-index: 1;
+  font-size: 36px;
+  max-width: 57%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.close-btn-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 footer {
