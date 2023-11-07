@@ -54,31 +54,36 @@
       <span class="close"></span>
       <div class="modal-body">
         <form id="form" name="reserve" action="index.html" method="get">
+          
           <div class="formData">
             <label for="firstname">Prénom</label><br>
             <input class="text-control" type="text" id="firstname" name="firstname" minlength="2"><br>
           </div>
+          
           <div class="formData">
             <label for="lastname">Nom</label><br>
             <input class="text-control" type="text" id="lastname" name="lastname" minlength="2"><br>
           </div>
+          
           <div class="formData">
             <label for="email">E-mail</label><br>
             <input class="text-control" type="email" id="email" name="email"><br>
           </div>
+          
           <div class="formData">
             <label for="birthdate">Date de naissance</label><br>
-            <input class="text-control" type="date" id="birthdate" name="birthdate"><br>
+            <input class="text-control" type="date" id="birthdate" name="birthdate" max="2013-01-01"><br>
           </div>
+          
           <div class="formData">
             <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
             <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
           </div>
           
-          <p id="location" class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+          <p class="text-label">À quel tournoi souhaitez-vous participer cette année ?</p>
           
-          <div class="formData">
-            <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" checked>
+          <div id="location" class="formData">
+            <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
             <label class="checkbox-label" for="location1">
               <span class="checkbox-icon"></span>
               New York
@@ -109,8 +114,9 @@
               Portland
             </label>
           </div>
-          <div class="formData">
-            <input class="checkbox-input" type="checkbox" id="checkbox1" name="accept_condition" checked>
+          
+          <div class="formData infos">
+            <input class="checkbox-input" type="checkbox" id="checkbox1" name="accept_condition">
             <label id="accept" class="checkbox2-label" for="checkbox1">
               <span class="checkbox-icon"></span>
               J'ai lu et accepté les conditions d'utilisation.
@@ -123,6 +129,7 @@
             </label>
             <br>
           </div>
+          
           <input class="btn-submit" type="submit" value="C'est parti">
         </form>
       </div>
@@ -137,6 +144,8 @@
 </footer>
 <!-- End Footer -->
 
+<script src="utils.js"></script>
+<script src="validators.js"></script>
 <script src="modal.js"></script>
 </body>
 </html>
