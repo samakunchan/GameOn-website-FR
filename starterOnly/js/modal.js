@@ -5,19 +5,25 @@ const modalBtn = document.querySelectorAll('.modal-btn');
 const formElement = document.getElementById('form');
 const quantityInput = document.getElementById('quantity');
 const myTopNav = document.getElementById('myTopnav');
+const editNav = document.querySelector('.edit-nav');
 
-const editNav = () => {
+/**
+ * Callback qui gère l'affichage du menu en mode mobile
+ */
+const openMenuOnMobile = () => {
   if (myTopNav.className === 'topnav') {
     myTopNav.className += ' responsive';
   } else {
     myTopNav.className = 'topnav';
   }
 }
+editNav.addEventListener('click', openMenuOnMobile);
 
 /**
  * Callback qui gère le lancement de la modal
  */
 const launchModal = () => {
+  document.body.scrollIntoView({block: 'start'})
   modalbg.style.display = 'block';
 
   // Reset errors messages

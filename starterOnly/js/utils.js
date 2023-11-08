@@ -1,4 +1,5 @@
 // Constantes
+const ageDiff = 15;
 const invalidText = 'INVALID';
 const invalidLength = `Veuillez entrer 2 caractères ou plus pour le champ du nom.`;
 const invalidBirthdate = `Vous devez entrer votre date de naissance.`;
@@ -132,6 +133,7 @@ const transformFormDataToJson = formData => formData.reduce((r, a) => {
             break;
         case 'birthdate':
             const isBirthDateValid = validateBirthdate(a[1]);
+            console.log('Valide: ' + isBirthDateValid);
             r[a[0]] = isBirthDateValid ? a[1] : invalidBirthdate;
             break;
         case 'quantity':
@@ -156,3 +158,9 @@ const transformFormDataToJson = formData => formData.reduce((r, a) => {
 
     return r;
 }, {});
+
+const calculateAge = (birthday) => { // birthday is a date
+    const ageDifMs = Date.now() - new Date(birthday.split('-').join(','));
+    const ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(Number(ageDate.getUTCFullYear()) - 1970);
+}

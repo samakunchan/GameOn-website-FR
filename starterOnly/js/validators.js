@@ -51,6 +51,10 @@ const validateDigit = quantity => quantity.match(/^\d+$/) && (Number(quantity) >
  * @author Samakunchan
  */
 const validateBirthdate = date => date.match(/\d{4}-\d{2}-\d{2}/);
+// const validateBirthdate = date => {
+//     const age = calculateAge(date);
+//     return !!date.match(/\d{4}-\d{2}-\d{2}/) && age >= ageDiff;
+// };
 
 /**
  * Valide la ville
