@@ -17,7 +17,7 @@
   </div>
   
   <!-- Navigation -->
-  <nav class="main-navbar">
+  <nav class="main-navbar" aria-label="Menu du site">
     <a href="javascript:void(0);" class="active"><span>Accueil</span></a>
     <a href="javascript:void(0);"><span>Détails de l'évènement</span></a>
     <a href="javascript:void(0);"><span>À propos</span></a>
@@ -31,11 +31,11 @@
 <!-- End Header -->
 
 <!-- Contenu principal -->
-<main>
+<main aria-label="Contenu principale du site">
   <div class="hero-section">
     <div class="hero-content">
       <h1 class="hero-headline">
-        Marathon national<br>
+        Marathon national<br aria-hidden="true">
         de jeux vidéos
       </h1>
       <p class="hero-text">
@@ -44,7 +44,7 @@
       <button class="btn-signup modal-btn">je m'inscris</button>
     </div>
     <div class="hero-img">
-      <img src="images/bg_img.jpg" alt="img">
+      <img src="images/bg_img.jpg" alt="Image réprensant une joueuse">
     </div>
     <button class="btn-signup modal-btn">je m'inscris</button>
   </div>
@@ -53,81 +53,81 @@
     <div class="content">
       <span class="close"></span>
       <div class="modal-body">
-        <form id="form" name="reserve" action="index.html" method="get">
+        <form id="form" name="reserve" action="index.html" method="get" aria-label="Formulaire d'inscription du tournois">
           
           <div class="formData">
-            <label for="firstname">Prénom</label><br>
-            <input class="text-control" type="text" id="firstname" name="firstname" minlength="2"><br>
+            <label id="labelFirstname" for="firstname" aria-labelledby="labelFirstname">Prénom</label><br aria-hidden="true">
+            <input class="text-control" type="text" id="firstname" name="firstname" minlength="2"><br aria-hidden="true">
           </div>
           
           <div class="formData">
-            <label for="lastname">Nom</label><br>
-            <input class="text-control" type="text" id="lastname" name="lastname" minlength="2"><br>
+            <label id="labelLastname" for="lastname" aria-labelledby="labelLastname">Nom</label><br aria-hidden="true">
+            <input class="text-control" type="text" id="lastname" name="lastname" minlength="2"><br aria-hidden="true">
           </div>
           
           <div class="formData">
-            <label for="email">E-mail</label><br>
-            <input class="text-control" type="email" id="email" name="email"><br>
+            <label id="labelEmail" for="email" aria-labelledby="labelEmail">E-mail</label><br aria-hidden="true">
+            <input class="text-control" type="email" id="email" name="email"><br aria-hidden="true">
           </div>
           
           <div class="formData">
-            <label for="birthdate">Date de naissance</label><br>
-            <input class="text-control" type="date" id="birthdate" name="birthdate" max="2013-01-01"><br>
+            <label id="labelBirthdate" for="birthdate" aria-labelledby="labelBirthdate">Date de naissance</label><br aria-hidden="true">
+            <input class="text-control" type="date" id="birthdate" name="birthdate" max="2013-01-01"><br aria-hidden="true">
           </div>
           
           <div class="formData">
-            <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+            <label id="labelQuantity" for="quantity" aria-labelledby="labelQuantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br aria-hidden="true">
             <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
           </div>
           
-          <p class="text-label">À quel tournoi souhaitez-vous participer cette année ?</p>
+          <p id="contestQuestion" class="text-label" aria-labelledby="contestQuestion">À quel tournoi souhaitez-vous participer cette année ?</p>
           
           <div id="location" class="formData">
-            <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" checked>
-            <label class="checkbox-label" for="location1">
+            <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
+            <label id="labelLocation1" class="checkbox-label" for="location1" aria-labelledby="labelLocation1">
               <span class="checkbox-icon"></span>
               New York
             </label>
             <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco">
-            <label class="checkbox-label" for="location2">
+            <label id="labelLocation2" class="checkbox-label" for="location2" aria-labelledby="labelLocation2">
               <span class="checkbox-icon"></span>
               San Francisco
             </label>
             <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle">
-            <label class="checkbox-label" for="location3">
+            <label id="labelLocation3" class="checkbox-label" for="location3" aria-labelledby="labelLocation3">
               <span class="checkbox-icon"></span>
               Seattle
             </label>
             <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago">
-            <label class="checkbox-label" for="location4">
+            <label id="labelLocation4" class="checkbox-label" for="location4" aria-labelledby="labelLocation4">
               <span class="checkbox-icon"></span>
               Chicago
             </label>
             <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston">
-            <label class="checkbox-label" for="location5">
+            <label id="labelLocation5" class="checkbox-label" for="location5" aria-labelledby="labelLocation5">
               <span class="checkbox-icon"></span>
               Boston
             </label>
             <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland">
-            <label class="checkbox-label" for="location6">
+            <label id="labelLocation6" class="checkbox-label" for="location6" aria-labelledby="labelLocation6">
               <span class="checkbox-icon"></span>
               Portland
             </label>
           </div>
           
           <div class="formData infos">
-            <input class="checkbox-input" type="checkbox" id="checkbox1" name="accept_condition" checked>
-            <label id="accept" class="checkbox2-label" for="checkbox1">
+            <input class="checkbox-input" type="checkbox" id="checkbox1" name="accept_condition">
+            <label id="accept" class="checkbox2-label" for="checkbox1" aria-label="Acceptation des conditions d'utilisation">
               <span class="checkbox-icon"></span>
               J'ai lu et accepté les conditions d'utilisation.
             </label>
-            <br id="afterAccept">
+            <br id="afterAccept" aria-hidden="true">
             <input class="checkbox-input" type="checkbox" id="checkbox2" name="newsletter">
-            <label class="checkbox2-label" for="checkbox2">
+            <label class="checkbox2-label" for="checkbox2" aria-label="Newletters">
               <span class="checkbox-icon"></span>
               Je souhaite être prévenu des prochains évènements.
             </label>
-            <br>
+            <br aria-hidden="true">
           </div>
           
           <input class="btn-submit" type="submit" value="C'est parti">
@@ -139,7 +139,7 @@
 <!-- End Contenu principal -->
 
 <!-- Footer -->
-<footer>
+<footer aria-label="Pied de page">
   <p class="copyrights">Copyright 2014 - 2023, GameOn Inc.</p>
 </footer>
 <!-- End Footer -->

@@ -124,17 +124,17 @@ const transformFormDataToJson = formData => formData.reduce((r, a) => {
     switch (a[0]) {
         case 'firstname':
         case 'lastname':
-            const isLengthValid = validateLength(a[1]);
-            r[a[0]] = isLengthValid ? a[1] : invalidLength;
+            const isLengthValid = validateLength(a[1].trim());
+            r[a[0]] = isLengthValid ? a[1].trim() : invalidLength;
             break;
         case 'email':
             const isEmailValid = validateEmail(a[1]);
-            r[a[0]] = isEmailValid ? a[1] : invalidEmail;
+            r[a[0]] = isEmailValid ? a[1].trim() : invalidEmail;
             break;
         case 'birthdate':
             const isBirthDateValid = validateBirthdate(a[1]);
             console.log('Valide: ' + isBirthDateValid);
-            r[a[0]] = isBirthDateValid ? a[1] : invalidBirthdate;
+            r[a[0]] = isBirthDateValid ? a[1].trim() : invalidBirthdate;
             break;
         case 'quantity':
             const isDigitValid = validateDigit(a[1]);
